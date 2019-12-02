@@ -18,7 +18,12 @@ router.post(
     ).isLength({ min: 6 })
   ],
   (req, res) => {
-    console.log(req.body);
+    const errors = validationResult(req);
+    // Sets response in the case of validation errors
+    if (!errors.isEmpty()) {
+      // Returns bad request code and array of validation error messages
+      return res.status(400).json({ errors: errors.array() });
+    }
     res.send('User route');
   }
 );
