@@ -10,7 +10,8 @@ const connectDB = async () => {
     await mongoose.connect(db, {
       // Options to use new URL string parser and new Server Discovery and Monitoring engine. This addresses DeprecationWarning messages that are thrown
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
+      useCreateIndex: true
     });
 
     console.log('MongoDB connected...');
