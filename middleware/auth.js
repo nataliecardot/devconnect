@@ -20,7 +20,7 @@ module.exports = function(req, res, next) {
     // Note: The jwt.decode method only decodes the token and should only every be used on trusted messages. Since jwt.verify also decodes the token but after verification, it provides a safer and more secure way to decode the token, so it should be the preferred method
     const decoded = jwt.verify(token, config.get('jwtSecret'));
 
-    // Take request object and assign a value to user (decoded has user in the payload). Then can use this req.user in any of the protected routes and, for instance, get the user's profile
+    // Take request object and assign a value to user (decoded has user in the payload). Then can use this req.user (which contains the user ID) in any of the protected routes and, for instance, get the user's profile
     req.user = decoded.user;
     next();
   } catch (err) {
