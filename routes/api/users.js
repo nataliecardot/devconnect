@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const config = require('config');
 const { check, validationResult } = require('express-validator');
 
 // Bring in Mongoose model
@@ -71,9 +73,28 @@ router.post(
       // Save user to database
       await user.save();
 
-      // Return jsonwebtoken so that when a user registers they're logged in right away
+      // Return JSON Web Token (JWT) so that when a user registers they're logged in right away. Will send it in the headers and enable access to protected routes
 
-      res.send('User registered');
+      // JSON Web Token is composed of header (token type and hashing algorithm that will be used to generate signature), the payload (data you want to send in the token, which here is the user's id), and the signature, which is used to validate that the token is trustworthy and has not been tampered with (made up of a hash of the header, payload, and secret)
+      const payload = {
+        user: {
+          // Mongo.db has _id, but Mongoose uses an abstraction, so you don't have to use ._id
+          id: user.id
+        }
+      };
+
+      // TODO: Change expiresIn option to 3600 (seconds - one hour) once it's ready for production
+      jwt.sign(
+        payload,
+        config.get('jwtSecret'),
+        { expiresIn: 360000 },
+        (err, token) => {
+          // If there's an error, the error is thrown (generated), and execution of the current function will stop (the statements after throw won't be executed)
+          if (err) throw err;
+          // Send token back to client
+          res.json({ token });
+        }
+      );
     } catch (err) {
       console.error(err);
       res.status(500).send('Server error');
