@@ -73,7 +73,7 @@ router.post(
       // Save user to database
       await user.save();
 
-      // Return JSON Web Token (JWT) so that when a user registers they're logged in right away. Will send it in the headers and enable access to protected routes
+      // Return JSON Web Token (JWT) so that when a user registers they're logged in right away
 
       // JSON Web Token is composed of header (token type and hashing algorithm that will be used to generate signature), the payload (data you want to send in the token, which here is the user's id), and the signature, which is used to validate that the token is trustworthy and has not been tampered with (made up of a hash of the header, payload, and secret)
       const payload = {
