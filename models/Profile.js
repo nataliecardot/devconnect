@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // Will bring this into profile routes and query the database (get profiles, create them, update, delete, etc.)
-const ProfileSchema = new mongoose.schema({
+const ProfileSchema = new mongoose.Schema({
   // Create reference to user model, because every profile model should be associated with user
   user: {
     // id is not in the User model file, but refers to user.id in the payload when a new user is created
