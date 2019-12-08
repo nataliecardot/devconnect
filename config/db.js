@@ -11,7 +11,8 @@ const connectDB = async () => {
       // Options to use new URL string parser and new Server Discovery and Monitoring engine. This addresses DeprecationWarning messages that are thrown
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      useCreateIndex: true
+      useCreateIndex: true,
+      useFindAndModify: false
     });
 
     console.log('MongoDB connected...');
