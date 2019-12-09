@@ -4,8 +4,10 @@ const mongoose = require('mongoose');
 const ProfileSchema = new mongoose.Schema({
   // Create reference to user model, because every profile model should be associated with user
   user: {
-    // id is not in the User model file, but refers to user.id in the payload when a new user is created
+    // Connecting it with an ID in the user model. id is not in the User model file, but when a new user is created, refers to _id that is added
     type: mongoose.Schema.Types.ObjectId,
+    // The ref option tells Mongoose which model to use during population, because every profile should be associated with a user -- ref name is the same one being exported from the user model, i.e., mongoose.model('User', userSchema)
+    // Note: MongoDB automatically makes the models plural when entries start pouring in; user becomes users
     ref: 'User'
   },
   company: {

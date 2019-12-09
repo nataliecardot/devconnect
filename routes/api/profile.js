@@ -15,6 +15,7 @@ router.get('/me', auth, async (req, res) => {
     // populate method, which lets you reference documents in other collections, adds name and avatar to query from User model
     const profile = await Profile.findOne({
       user: req.user.id
+      // Bringing in (populating) fields from User model
     }).populate('User', ['name', 'avatar']);
 
     if (!profile) {
@@ -130,7 +131,29 @@ router.get('/', async (req, res) => {
     res.json(profiles);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).send('Server error');
+  }
+});
+
+// @route GET api/profile/user/:user_id (:user_id is placeholder)
+// @desc Get profile by user ID
+// @access Public
+router.get('/user/:user_id', async (req, res) => {
+  try {
+    const profile = await Profile.findOne({
+      user: req.params.user_id
+    }).populate('User', ['name', 'avatar']);
+
+    if (!profile) return res.status(400).json({ msg: 'Profile not found' });
+
+    res.json(profile);
+  } catch (err) {
+    console.error(err.message);
+    // ObjectId is coming from Mongoose. It refers to the object id which is unique for every document in the database
+    if (err.kind == 'ObjectId') {
+      return res.status(400).json({ msg: 'Profile not found' });
+    }
+    res.status(500).send('Server error');
   }
 });
 
