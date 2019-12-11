@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 
 // This is middleware for verifying JSON web token that comes in from the client (header)
-// When a request is sent to a protected route, need to send the token within a header to authenticate and enable access to protected routes
+// When a request is sent to a protected route, need to send the token within a header to authenticate and enable access to it
 // Exporting a middleware function (a function that has request and response objects available to it)
 module.exports = function(req, res, next) {
   // Get token from header

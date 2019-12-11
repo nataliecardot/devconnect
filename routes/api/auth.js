@@ -24,7 +24,7 @@ router.get('/', auth, async (req, res) => {
 // Enable log in – can get token back at point of registration, now want to take credentials (email, pass), send to route, and get token
 
 // @route POST api/auth
-// @desc Authenticate user and get token
+// @desc Authenticate (log in) user and get token
 // @access Public (don't need to send authentication token for it to work)
 router.post(
   '/',
