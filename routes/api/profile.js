@@ -176,7 +176,7 @@ router.delete('/', auth, async (req, res) => {
 });
 
 // @route PUT api/experience
-// @desc Add profile experience
+// @desc Add experience to profile
 // @access Private
 router.put(
   '/experience',
@@ -237,5 +237,31 @@ router.put(
     }
   }
 );
+
+// Could be a put request since updating (overwriting), but making it a delete request since something is being removed (matter of preference)
+// @route DELETE api/profile/experience/:exp_id
+// @desc Delete experience from profile
+// @access Private
+router.delete('/experience/:exp_id', auth, async (req, res) => {
+  try {
+    const profile = await Profile.findOne({ user: req.user.id });
+
+    // Get remove index (get correct experience to remove)
+    // Mapping over experience array (an array of objects), creating an array of _id properties, then taking that array and returning the index of the item in the array matching the experience id passed in as a part of the query string request paramater
+    const removeIndex = profile.experience
+      .map(item => item.id)
+      .indexOf(req.params.exp_id);
+
+    // Start position to remove items (note you can also add items with splice), and delete count (if omitted, all elements from start position to end of array would be deleted)
+    profile.experience.splice(removeIndex, 1);
+
+    await profile.save();
+
+    res.json(profile);
+  } catch (error) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
 
 module.exports = router;
