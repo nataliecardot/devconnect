@@ -264,4 +264,96 @@ router.delete('/experience/:exp_id', auth, async (req, res) => {
   }
 });
 
+// @route PUT api/education
+// @desc Add education to profile
+// @access Private
+router.put(
+  '/education',
+  [
+    auth,
+    [
+      check('school', 'School is required')
+        .not()
+        .isEmpty(),
+      check('degree', 'Degree is required')
+        .not()
+        .isEmpty(),
+      check('fieldofstudy', 'Field of study is required')
+        .not()
+        .isEmpty(),
+      check('from', 'From date is required')
+        .not()
+        .isEmpty()
+    ]
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    const {
+      school,
+      degree,
+      fieldofstudy,
+      from,
+      to,
+      current,
+      description
+    } = req.body;
+
+    // Creates object with data user submits.
+    const newEdu = {
+      school, // Same as school: school, with the value being the one destructured from req.body
+      degree,
+      fieldofstudy,
+      from,
+      to,
+      current,
+      description
+    };
+
+    try {
+      // Where the user field has a value matching the id (in payload) from the token sent in req object
+      const profile = await Profile.findOne({ user: req.user.id });
+
+      // Add new education data to beginning of education array
+      profile.education.unshift(newEdu);
+
+      await profile.save();
+
+      res.json(profile);
+    } catch (error) {
+      console.error(err.message);
+      res.status(500).send('Server error');
+    }
+  }
+);
+
+// Could be a put request since updating (overwriting), but making it a delete request since something is being removed (matter of preference)
+// @route DELETE api/profile/education/:edu_id
+// @desc Delete education from profile
+// @access Private
+router.delete('/education/:edu_id', auth, async (req, res) => {
+  try {
+    const profile = await Profile.findOne({ user: req.user.id });
+
+    // Get remove index (get correct education to remove)
+    // Mapping over education array (an array of objects), creating an array of _id properties, then taking that array and returning the index of the item in the array matching the education id passed in as a part of the query string request paramater
+    const removeIndex = profile.education
+      .map(item => item.id)
+      .indexOf(req.params.edu_id);
+
+    // Start position to remove items (note you can also add items with splice), and delete count (if omitted, all elements from start position to end of array would be deleted)
+    profile.education.splice(removeIndex, 1);
+
+    await profile.save();
+
+    res.json(profile);
+  } catch (error) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
 module.exports = router;
