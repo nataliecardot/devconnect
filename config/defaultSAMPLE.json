@@ -1,4 +1,6 @@
 {
   "mongoURI": "[Create a cluster with MongoDB Atlas and insert the cluster connection string]",
-  "jwtSecret": "[secrettokentextofyourchoice]"
+  "jwtSecret": "[secrettokentextofyourchoice]",
+  "githubClientId": "[client id]",
+  "githubClientSecret": "[client secret]"
 }
