@@ -1,24 +1,18 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 // Will bring this into profile routes and query the database (get profiles, create them, update, delete, etc.)
-const ProfileSchema = new mongoose.Schema({
-  // Create reference to user model, because every profile model should be associated with user
+const profileSchema = new Schema({
   user: {
-    // Connecting it with an ID in the user model. id is not in the User model file, but when a new user is created, refers to _id that is added
-    type: mongoose.Schema.Types.ObjectId,
+    // Connecting it with an id in the user model. id is not in the User model file, but when a new user is created, refers to _id that is added
+    type: Schema.Types.ObjectId,
     // The ref option tells Mongoose which model to use during population, because every profile should be associated with a user -- ref name is the same one being exported from the user model, i.e., mongoose.model('User', userSchema)
-    // Note: MongoDB automatically makes the models plural when entries start pouring in; user becomes users
+    // Note: MongoDB automatically makes the models plural when entries start pouring in; user becomes users. When you call mongoose.model() on a schema, Mongoose compiles a model for you.The first argument is the singular name of the collection your model is for. Mongoose automatically looks for the plural, lowercased version of your model name
     ref: 'User'
   },
-  company: {
-    type: String
-  },
-  website: {
-    type: String
-  },
-  location: {
-    type: String
-  },
+  company: String,
+  website: String,
+  location: String,
   // e.g., developer, senior developer, student, instructor (there will be a dropdown with options)
   status: {
     type: String,
@@ -29,9 +23,7 @@ const ProfileSchema = new mongoose.Schema({
     type: [String],
     required: true
   },
-  bio: {
-    type: String
-  },
+  bio: String, // String is shorthand for { type: String }
   githubusername: {
     type: String
   },
@@ -117,4 +109,4 @@ const ProfileSchema = new mongoose.Schema({
   }
 });
 
-module.exports = Profile = mongoose.model('Profile', ProfileSchema);
+module.exports = mongoose.model('Profile', profileSchema);

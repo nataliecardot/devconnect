@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-// To interact with database, have to create a Mongoose model for each of the resources. To create a model, have to create a schema, which holds the different fields this particular resource should have
+// Models are fancy constructors compiled from Schema definitions. Schema are the description of the data. Model kind of represent your collection. An instance of a model is called a document. Models are responsible for creating and reading documents from the underlying MongoDB database. To interact with database, have to create a Mongoose model for each of the resources. To create a model, have to create a schema, which holds the different fields this particular resource should have
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
   name: {
     type: String,
     required: true
@@ -19,13 +20,12 @@ const userSchema = new mongoose.Schema({
     required: true
   },
   // Gravatar. Adding to user model so it's always accessible. When you first register, it will create a user but not a profile right away. But want avatar available right away
-  avatar: {
-    type: String
-  },
+  avatar: String, // String is shorthand for { type: String }
   date: {
     type: Date,
     default: Date.now
   }
 });
 
-module.exports = User = mongoose.model('User', userSchema);
+// Don't have to name the export per https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose (originally was module.exports = User = mongoose.model('User', userSchema);)
+module.exports = mongoose.model('User', userSchema);
