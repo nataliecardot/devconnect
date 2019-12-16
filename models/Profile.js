@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const profileSchema = new Schema({
   user: {
     // Connecting it with an id in the user model. id is not in the User model file, but when a new user is created, refers to _id that is added
+    // In the registration route in api/users.js, with the line await user.save() after creating an instance of the User model with user = new User({ ..... }), MongoDB creates a document within the collection called users, and for each of these documents, an _id field is automatically created. The JWT token payload (data sent in token) is set to a user key with a value id: user.id, short for user._id, with ._id being the id created by MongoDB for the document)
     type: Schema.Types.ObjectId,
     // The ref option tells Mongoose which model to use during population, because every profile should be associated with a user -- ref name is the same one being exported from the user model, i.e., mongoose.model('User', userSchema)
     // Note: MongoDB automatically makes the models plural when entries start pouring in; user becomes users. When you call mongoose.model() on a schema, Mongoose compiles a model for you.The first argument is the singular name of the collection your model is for. Mongoose automatically looks for the plural, lowercased version of your model name
