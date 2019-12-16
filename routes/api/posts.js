@@ -65,4 +65,26 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
+// @route GET api/posts/:id
+// @desc Get post by ID
+// @access Private (must be logged in to see posts page; profiles are public but not posts)
+router.get('/:id', auth, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+
+    if (!post) {
+      return res.status(404).json({ msg: 'Post not found' });
+    }
+
+    res.json(post);
+  } catch (err) {
+    console.log(err.message);
+    // If equal to ObjectId, not a valid/correctly formatted ObjectId, so post not found; want same response as above
+    if (err.kind === 'ObjectId') {
+      return res.status(404).json({ msg: 'Post not found' });
+    }
+    res.status(500).send('Server error');
+  }
+});
+
 module.exports = router;
