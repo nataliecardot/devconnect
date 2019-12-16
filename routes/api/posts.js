@@ -9,7 +9,7 @@ const User = require('../../models/User');
 
 // @route POST api/posts
 // @desc Create a post
-// @access Public (don't need to send authentication token for it to work)
+// @access Private
 router.post(
   '/',
   [
