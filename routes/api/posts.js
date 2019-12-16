@@ -51,4 +51,18 @@ router.post(
   }
 );
 
+// @route GET api/posts
+// @desc Get all posts
+// @access Private (must be logged in to see posts page; profiles are public but not posts)
+router.get('/', auth, async (req, res) => {
+  try {
+    // -1 date: descending; most recent first
+    const posts = await Post.find().sort({ date: -1 });
+    res.json(posts);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
 module.exports = router;
