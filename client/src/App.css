@@ -5,6 +5,7 @@
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
   --success-color: #28a745;
+  --border-radius: 5px;
 }
 
 * {
@@ -44,7 +45,7 @@ img {
   margin-bottom: 3rem;
 }
 
-/* Text styles*/
+/* Text styles */
 .x-large {
   font-size: 4rem;
   line-height: 1.2;
@@ -141,6 +142,7 @@ img {
 }
 
 .btn {
+  border-radius: var(--border-radius);
   display: inline-block;
   background: var(--light-color);
   color: #333;
