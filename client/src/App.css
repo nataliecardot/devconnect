@@ -38,7 +38,8 @@ img {
 
 /* Utilities */
 .container {
-  max-width: 1100px;
+  /* TODO: Change back to 1100? */
+  max-width: 800px;
   margin: auto;
   overflow: hidden;
   padding: 0 2rem;
@@ -468,6 +469,10 @@ button {
 }
 
 .profile-github .repo > div:first-child {
+  /* flex: One value, unitless number: flex-grow */
+  /* flex: 1 30px -- 2 values here would be flex-grow | flex-basis */
+  /* flex-grow: Specifies how much of the remaining space in the flex container should be assigned to the item */
+  /* flex-bases: Sets the initial main size of a flex item */
   flex: 7;
   flex-basis: 70%;
 }
@@ -513,7 +518,7 @@ button {
 }
 
 /* Mobile styles */
-@media (max-width: 700px) {
+@media screen and (max-width: 700px) {
   .container {
     margin-top: 8rem;
   }
@@ -565,7 +570,6 @@ button {
   }
 
   /* Profile page */
-
   .profile-top img,
   .profile img {
     width: 200px;
@@ -599,3 +603,5 @@ button {
     padding: 0.3rem 0.4rem;
   }
 }
+
+@media screen and (max-width: 700px);
