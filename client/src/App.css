@@ -6,6 +6,7 @@
   --danger-color: #dc3545;
   --success-color: #28a745;
   --border-radius: 5px;
+  --form-elem-border-radius: 3px;
 }
 
 * {
@@ -267,6 +268,7 @@ img {
 .form input[type='date'],
 .form select,
 .form textarea {
+  border-radius: var(--form-elem-border-radius);
   display: block;
   width: 100%;
   padding: 0.4rem;
