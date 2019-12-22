@@ -11,7 +11,7 @@
 
 /* To hide white space and scrollbar below landing image */
 html {
-  overflow: hidden;
+  overflow-y: hidden;
 }
 
 * {
