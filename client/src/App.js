@@ -6,20 +6,26 @@ import Landing from './components/layouts/Landing';
 import Navbar from './components/layouts/Navbar';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
+// Redux
+import { Provider } from 'react-redux';
+import store from './store';
 
 const App = () => (
-  <Router>
-    <Navbar />
-    {/* exact prop needed to prevent all routes starting with "/" to render */}
-    <Route exact path="/" component={Landing} />
-    {/* Every page within theme except landing page has a class of container to center everything */}
-    <section className="container">
-      <Switch>
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/login" component={Login} />
-      </Switch>
-    </section>
-  </Router>
+  // Provider connects React with Redux
+  <Provider store={store}>
+    <Router>
+      <Navbar />
+      {/* exact prop needed to prevent all routes starting with "/" to render */}
+      <Route exact path="/" component={Landing} />
+      {/* Every page within theme except landing page has a class of container to center everything */}
+      <section className="container">
+        <Switch>
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
+        </Switch>
+      </section>
+    </Router>
+  </Provider>
 );
 
 export default App;
