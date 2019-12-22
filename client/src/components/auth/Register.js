@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -20,29 +20,7 @@ const Register = () => {
     if (password !== password2) {
       console.log('Passwords do not match');
     } else {
-      const newUser = {
-        name, // Same as name: name (referring to variable above)
-        email,
-        password
-      };
-
-      try {
-        // Creating since sending data. To send in request to server
-        const config = {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        };
-
-        // Creates body to send to server as request object body. Converts JavaScript object to JSON string (data sent to a server has to be a string)
-        const body = JSON.stringify(newUser);
-
-        const res = await axios.post('/api/users', body, config);
-        // Token
-        console.log(res.data);
-      } catch (err) {
-        console.error(err.response.data);
-      }
+      console.log('SUCCESS');
     }
   };
 
@@ -50,7 +28,7 @@ const Register = () => {
     <>
       <h1 className="large text-primary">Sign Up</h1>
       <p className="lead">
-        <i className="fas fa-user"></i> Create Your Account
+        <i className="fas fa-user"></i> &nbsp;Create your account
       </p>
       <form className="form" onSubmit={e => onSubmit(e)}>
         <div className="form-group">
@@ -100,7 +78,7 @@ const Register = () => {
         <input type="submit" className="btn btn-primary" value="Register" />
       </form>
       <p className="my-1">
-        Already have an account? <a href="login.html">Sign in</a>
+        Already have an account? <Link to="/login">Sign in</Link>
       </p>
     </>
   );
