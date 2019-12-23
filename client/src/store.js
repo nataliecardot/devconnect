@@ -5,6 +5,7 @@ import rootReducer from './reducers'; // Will be index.js in ./reducers, so can 
 
 const initialState = {};
 
+// Redux Thunk is a middleware that lets you call action creators that return a function instead of an object https://alligator.io/redux/redux-thunk/
 const middleware = [thunk];
 
 const store = createStore(

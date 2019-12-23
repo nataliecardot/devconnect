@@ -41,6 +41,8 @@ npm run dev
 
 - `moment`: JavaScript library for working with dates and times (e.g., formatting)
 
+- `uuid`: generates a random string, for use as an id in this app
+
 _Front end:_
 
 The app's front end is contained in the `client` directory. It was bootstrapped with `create-react-app`.
