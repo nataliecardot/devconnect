@@ -1,5 +1,5 @@
-const uuidv4 = require('uuid/v4');
 import { SET_ALERT, REMOVE_ALERT } from './types';
+const uuidv4 = require('uuid/v4');
 
 // Using dispatch enables dispatching more than one action type from this function. Redux thunk in use here
 // Action setAlert dispatches type of SET_ALERT to reducer, which calls that state in reducer and causes the state to be returned as specified for that case in the switch statement. The state returned by the reducer is the payload from the action. Initially the state is just an empty array

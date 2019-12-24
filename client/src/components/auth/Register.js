@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { setAlert } from '../../actions/alert';
 
-const Register = () => {
+const Register = props => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,7 +20,8 @@ const Register = () => {
   const onSubmit = async e => {
     e.preventDefault();
     if (password !== password2) {
-      console.log('Passwords do not match');
+      // Passes 'Passwords do not match' in as value of action's key 'msg', set the value of key 'alertType' to danger, a random ID will be generated (with uuidv4), and the action will be dispatched with all that info
+      props.setAlert('Passwords do not match', 'danger');
     } else {
       console.log('SUCCESS');
     }
@@ -84,4 +87,8 @@ const Register = () => {
   );
 };
 
-export default Register;
+// connect() function connects a React component to a Redux store. It provides its connected component with the pieces of the data it needs from the store, and the functions it can use to dispatch actions to the store
+// Whenever you bring in an action to use, you have to pass it into connect. Connect takes two things: any state you want to map (a mapStateToProps function), and an object with any actions you want to use (a mapDispatchToProps function). Passing in the object lets you use props.setAlert
+// mapStateToProps does exactly what its name suggests: it connects a part of the Redux state to the props of a React component
+// mapDispatchToProps does something similar, but for actions. By doing so a connected React component will have access to the exact part of the store it needs. mapDispatchToProps connects Redux actions to React props. This way a connected React component will be able to send messages to the store
+export default connect(null, { setAlert })(Register);
