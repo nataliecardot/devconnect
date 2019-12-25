@@ -11,6 +11,6 @@ export const setAlert = (msg, alertType, timeout = 5000) => dispatch => {
     payload: { msg, alertType, id }
   });
 
-  // Dispatches a remove alert action after five seconds. In reducer, this type of action returns alerts that don't match payload id from original set alert action
+  // Dispatches a remove alert action after five seconds. In reducer, this type of action returns alerts that don't match payload id from original set alert action (return state.filter(alert => alert.id !== payload)) -- every alert.id WILL match with the payload in the REMOVE_ALERT action, because it is the exact same ID that was generated to create the alert in the first place when the SET_ALERT action fires
   setTimeout(() => dispatch({ type: REMOVE_ALERT, payload: id }), timeout);
 };
