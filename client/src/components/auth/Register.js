@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
+import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
-// Destructuring props so can simply use setAlert rather than props.setAlert (setAlert prop coming from passing it into connect function at bottom [mapDispatchToProps])
-const Register = ({ setAlert }) => {
+// Destructuring props so can simply use (e.g.) setAlert rather than props.setAlert (setAlert prop coming from passing it into connect function at bottom [mapDispatchToProps])
+const Register = ({ setAlert, register }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -25,7 +26,12 @@ const Register = ({ setAlert }) => {
       // Passes 'Passwords do not match' in as value of action's key 'msg', set the value of key 'alertType' to danger, a random ID will be generated (with uuidv4), and the action will be dispatched with all that info
       setAlert('Passwords do not match', 'danger');
     } else {
-      console.log('SUCCESS');
+      register({
+        // Can access these because they're being extracted from the component state (the form data)
+        name,
+        email,
+        password
+      });
     }
   };
 
@@ -43,7 +49,7 @@ const Register = ({ setAlert }) => {
             name="name"
             value={name}
             onChange={e => onChange(e)}
-            required
+            // required
           />
         </div>
         <div className="form-group">
@@ -53,7 +59,7 @@ const Register = ({ setAlert }) => {
             name="email"
             value={email}
             onChange={e => onChange(e)}
-            required // HTML5 client-side validation (also have server-side validation)
+            // required // HTML5 client-side validation (also have server-side validation)
           />
           <small className="form-text">
             If you want a profile image, use an email associated with a Gravatar
@@ -65,7 +71,7 @@ const Register = ({ setAlert }) => {
             type="password"
             placeholder="Password"
             name="password"
-            minLength="6"
+            // minLength="6"
             value={password}
             onChange={e => onChange(e)}
           />
@@ -75,7 +81,7 @@ const Register = ({ setAlert }) => {
             type="password"
             placeholder="Confirm password"
             name="password2"
-            minLength="6"
+            // minLength="6"
             value={password2}
             onChange={e => onChange(e)}
           />
@@ -90,7 +96,8 @@ const Register = ({ setAlert }) => {
 };
 
 Register.propTypes = {
-  setAlert: PropTypes.func.isRequired // Using React Snippets extension, ptfr enter
+  setAlert: PropTypes.func.isRequired, // Using React Snippets extension, ptfr enter
+  register: PropTypes.func.isRequired
 };
 
 // connect() function connects a React component to a Redux store. It provides its connected component with the pieces of the data it needs from the store, and the functions it can use to dispatch actions to the store. Any time you want to have a component interact with Redux, whether calling an action or getting the state, you need to use connect()
@@ -98,4 +105,4 @@ Register.propTypes = {
 // mapStateToProps does exactly what its name suggests: connects a part of the Redux state to the props of a React component
 // mapDispatchToProps does something similar, but for actions. By doing so, a connected React component will have access to the exact part of the store it needs. mapDispatchToProps connects Redux actions to React props. This way a connected React component will be able to send messages to the store
 // So here no mapStateToProps, just an action (serving as mapDispatchToProps)
-export default connect(null, { setAlert })(Register);
+export default connect(null, { setAlert, register })(Register);
