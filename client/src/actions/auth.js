@@ -4,7 +4,9 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   USER_LOADED,
-  AUTH_ERROR
+  AUTH_ERROR,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
 
@@ -29,7 +31,7 @@ export const loadUser = () => async dispatch => {
   }
 };
 
-// Register a user
+// Register user
 export const register = ({ name, email, password }) => async dispatch => {
   const config = {
     headers: {
@@ -37,17 +39,18 @@ export const register = ({ name, email, password }) => async dispatch => {
     }
   };
 
-  // By default axios uses Json for posting data so it's not necessary to stringify your data
-  // Preparing data to send
-  const body = JSON.stringify({ name, email, password });
+  // Axios passes body object into JSON.stringify() behind the scenes (unlike with Fetch API where you need to do it yourself)
+  const body = { name, email, password };
 
   try {
     const res = await axios.post('/api/users', body, config);
 
     dispatch({
       type: REGISTER_SUCCESS,
-      payload: res.data // On successful response, a token is sent in response
+      payload: res.data // On successful response to client post request, a token is sent back in response data
     });
+
+    dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
 
@@ -57,6 +60,39 @@ export const register = ({ name, email, password }) => async dispatch => {
 
     dispatch({
       type: REGISTER_FAIL
+    });
+  }
+};
+
+// Log in user
+export const login = (email, password) => async dispatch => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  // Axios passes body object into JSON.stringify() behind the scenes (unlike with Fetch API where you need to do it yourself)
+  const body = { email, password };
+
+  try {
+    const res = await axios.post('/api/auth', body, config);
+
+    dispatch({
+      type: LOGIN_SUCCESS,
+      payload: res.data // On successful response, a token is sent in response
+    });
+
+    dispatch(loadUser());
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+    }
+
+    dispatch({
+      type: LOGIN_FAIL
     });
   }
 };

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
 // Destructuring props so can simply use (e.g.) setAlert rather than props.setAlert (setAlert prop coming from passing it into connect function at bottom [mapDispatchToProps])
-const Register = ({ setAlert, register }) => {
+const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -34,6 +34,11 @@ const Register = ({ setAlert, register }) => {
       });
     }
   };
+
+  // Redirect if done registering
+  if (isAuthenticated) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return (
     <>
@@ -97,12 +102,16 @@ const Register = ({ setAlert, register }) => {
 
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired, // Using React Snippets extension, ptfr enter
-  register: PropTypes.func.isRequired
+  register: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool // ptb enter
 };
 
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
 // connect() function connects a React component to a Redux store. It provides its connected component with the pieces of the data it needs from the store, and the functions it can use to dispatch actions to the store. Any time you want to have a component interact with Redux, whether calling an action or getting the state, you need to use connect()
-// Whenever you bring in an action to use, you have to pass it into connect. Connect takes two things: any state you want to map (a mapStateToProps function) and an object with any actions you want to use (a mapDispatchToProps function). Passing in the object lets you use props.setAlert
+// Whenever you bring in an action to use, you have to pass it into connect. Connect takes two things: any state you want to map (a mapStateToProps function) and an object with any actions you want to use (a mapDispatchToProps function)
 // mapStateToProps does exactly what its name suggests: connects a part of the Redux state to the props of a React component
 // mapDispatchToProps does something similar, but for actions. By doing so, a connected React component will have access to the exact part of the store it needs. mapDispatchToProps connects Redux actions to React props. This way a connected React component will be able to send messages to the store
-// So here no mapStateToProps, just an action (serving as mapDispatchToProps)
-export default connect(null, { setAlert, register })(Register);
+export default connect(mapStateToProps, { setAlert, register })(Register);

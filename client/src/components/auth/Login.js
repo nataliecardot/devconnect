@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { login } from '../../actions/auth';
 
-const Login = () => {
+const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -15,8 +18,14 @@ const Login = () => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    console.log('SUCCESS');
+    login(email, password);
   };
+
+  // Redirect if logged in
+  if (isAuthenticated) {
+    // Redirect is from React Router
+    return <Redirect to="/dashboard" />;
+  }
 
   return (
     <>
@@ -54,4 +63,16 @@ const Login = () => {
   );
 };
 
-export default Login;
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
+};
+
+// mapStateToProps is used for selecting the part of the data from the store that the connected component needs. This will be called every time the store is updated
+// auth is how the auth reducer is named in the root reducer file
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+// connect(mapStateToProps, mapDispatchToProps)
+export default connect(mapStateToProps, { login })(Login);

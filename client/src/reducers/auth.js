@@ -2,10 +2,13 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   USER_LOADED,
-  AUTH_ERROR
+  AUTH_ERROR,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL
 } from '../actions/types';
 
 const initialState = {
+  // All data in Redux store will be cleared to initial state upon client refresh or browser tab close, so setting token this way re-retrieves it from localStorage. If user that logged in returns to site before token expiration time set in expiresIn option routes/api/auth.js, they won't have to log in again (Local storage is data with no expiration date that will persist after the browser window is closed. Session storage is data that gets cleared after the browser window is closed.)
   token: localStorage.getItem('token'),
   isAuthenticated: null,
   loading: true,
@@ -24,6 +27,7 @@ export default function(state = initialState, action) {
         user: payload // Payload contains the user (name, email, avatar, etc., everything but password [see router.get() in routes/api/auth.js])
       };
     case REGISTER_SUCCESS:
+    case LOGIN_SUCCESS:
       // If register is a success, token is received and want user to be logged in right away; this puts token that's returned in local storage
       localStorage.setItem('token', payload.token);
       return {
@@ -34,12 +38,14 @@ export default function(state = initialState, action) {
       };
     case REGISTER_FAIL:
     case AUTH_ERROR:
+    case LOGIN_FAIL:
       localStorage.removeItem('token');
       return {
         ...state,
         token: null,
         isAuthenticated: false,
-        loading: false
+        loading: false,
+        user: null // To remove user info on logout
       };
     default:
       return state;
