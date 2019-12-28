@@ -9,7 +9,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  // All data in Redux store will be cleared to initial state upon client refresh or browser tab close, so setting token this way re-retrieves it from localStorage. If user that logged in returns to site before token expiration time set in expiresIn option routes/api/auth.js, they won't have to log in again (Local storage is data with no expiration date that will persist after the browser window is closed. Session storage is data that gets cleared after the browser window is closed.)
+  // All data in Redux store will be cleared to initial state upon client refresh or browser tab close, so setting token this way re-retrieves it from localStorage. If user that logged in returns to site before token expiration time set in expiresIn option routes/api/auth.js, they won't have to log in again (Local storage is data with no expiration date that will persist after the browser window is closed. Session storage is data that gets cleared after the browser window is closed)
   token: localStorage.getItem('token'),
   isAuthenticated: null,
   loading: true,

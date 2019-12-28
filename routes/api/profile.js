@@ -146,6 +146,7 @@ router.get('/user/:user_id', async (req, res) => {
       user: req.params.user_id
     }).populate('user', ['name', 'avatar']);
 
+    // If you remove this line and you search for a user id which doesn't exist, you will get a response with status 200 (OK) and body with null. By default, mongoose findOne will not throw an exception if  the query result is 0
     if (!profile) return res.status(400).json({ msg: 'Profile not found' });
 
     res.json(profile);
