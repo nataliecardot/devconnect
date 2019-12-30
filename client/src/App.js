@@ -34,7 +34,7 @@ const App = () => {
         {/* exact prop needed to prevent all routes starting with "/" to render */}
         <Route exact path="/" component={Landing} />
         {/* Every page within theme except landing page has a class of container to center everything */}
-        <section className="container">
+        <div className="container">
           <Alert />
           <Switch>
             <Route exact path="/register" component={Register} />
@@ -46,7 +46,7 @@ const App = () => {
               component={CreateProfile}
             />
           </Switch>
-        </section>
+        </div>
       </Router>
     </Provider>
   );
