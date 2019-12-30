@@ -9,11 +9,6 @@
   --form-elem-border-radius: 3px;
 }
 
-/* To hide white space and scrollbar below landing image */
-html {
-  overflow-y: hidden;
-}
-
 i {
   padding-right: 0.25rem;
 }
@@ -374,11 +369,11 @@ button {
 
 /* Landing page */
 .landing {
-  position: relative;
   /* center center is background-position, cover is background-size (see https://stackoverflow.com/questions/31558245/declaring-all-css-background-properties-in-one-line-especially-background-size) */
   /* bacground-position: 2-value syntax: one value defines X and the other defines Y. Default value is top left or 0% 0% */
   background: url('./img/showcase.jpg') no-repeat center center / cover;
   height: 100vh;
+  position: relative;
 }
 
 .landing-inner {
