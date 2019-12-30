@@ -21,15 +21,15 @@ const Dashboard = ({
     <>
       <h1 className="large text-primary">Dashboard</h1>
       <p className="lead">
-        <i className="fas fa-user"></i> Welcome {user && user.name}
+        <i className="fas fa-user"></i> Welcome, {user && user.name}!
       </p>
       {profile ? (
         <>has</>
       ) : (
         <>
-          <p>You have not yet set up a profile.</p>
+          <p>You haven't added any profile information.</p>
           <Link to="/create-profile" className="btn btn-primary my-1">
-            Create profile
+            Create Profile
           </Link>
         </>
       )}
