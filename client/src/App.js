@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 // Selectively imports BrowserRouter, Route and Link from react-router-dom. The as Router statement makes BrowserRouter available under the name Router (instead of BrowserRouter), while the names of Route and Link are not changed
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
-import Landing from './components/layouts/Landing';
-import Navbar from './components/layouts/Navbar';
+import Landing from './components/layout/Landing';
+import Navbar from './components/layout/Navbar';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
-import Alert from './components/layouts/Alert';
+import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
 import PrivateRoute from './components/routing/PrivateRoute';
 // Redux

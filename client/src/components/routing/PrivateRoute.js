@@ -23,7 +23,7 @@ const PrivateRoute = ({
           <Component {...props} />
         )
       ) : (
-        <p>Loading...</p> // Perhaps a loading component could be used here
+        <></> // Not displaying anything because a loading spinner is shown when loading is true and profile is null (per logic in Dashboard component) and don't want to have multiple loading messages/spinners
       )
     }
   />
