@@ -44,7 +44,6 @@ img {
 .container {
   /* TODO: Change back to 1100? */
   max-width: 800px;
-  /* Top right bottom left */
   margin: 6rem auto 3rem auto;
   overflow: hidden;
   padding: 0 2rem;
