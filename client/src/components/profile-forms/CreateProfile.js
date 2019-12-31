@@ -33,10 +33,12 @@ const CreateProfile = props => {
     instagram
   } = formData;
 
+  const [displaySocialInputs, toggleSocialInputs] = useState(false);
+
   return (
     <>
       <h1 className="large text-primary">Create Your Profile</h1>
-      <p className="lead">
+      <p className="lead text-center">
         <i className="fas fa-user"></i> Let's get some information to make your
         profile stand out
       </p>
@@ -46,11 +48,11 @@ const CreateProfile = props => {
           <select name="status">
             <option value="0">* Select professional status</option>
             <option value="Developer">Developer</option>
-            <option value="Junior Developer">Junior Developer</option>
-            <option value="Senior Developer">Senior Developer</option>
+            <option value="Junior developer">Junior developer</option>
+            <option value="Senior developer">Senior developer</option>
             <option value="Manager">Manager</option>
-            <option value="Student or Learning">Student or Learning</option>
-            <option value="Instructor">Instructor or Teacher</option>
+            <option value="Student or learning">Student or learning</option>
+            <option value="Instructor">Instructor or teacher</option>
             <option value="Intern">Intern</option>
             <option value="Other">Other</option>
           </select>
@@ -85,7 +87,7 @@ const CreateProfile = props => {
         <div className="form-group">
           <input
             type="text"
-            placeholder="GitHub Username"
+            placeholder="GitHub username"
             name="githubusername"
           />
           <small className="form-text">
