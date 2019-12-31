@@ -159,6 +159,19 @@ img {
   outline: none;
 }
 
+h1 {
+  text-align: center;
+}
+
+.spinner {
+  text-align: center;
+}
+
+.fa-spinner {
+  color: #adb5bd;
+  padding: 1rem;
+}
+
 .badge {
   font-size: 0.8rem;
   padding: 0.1rem;
