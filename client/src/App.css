@@ -182,12 +182,15 @@ h1 {
   color: #333;
 }
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
+@keyframes fade-in-out {
+  0% {
+    opacity: 0.5;
   }
-  to {
+  50% {
     opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 
@@ -197,7 +200,8 @@ h1 {
   opacity: 0.9;
   background: var(--light-color);
   color: #333;
-  animation: fade-in ease-in 1s;
+  /* Seconds corresponds to milliseconds passed in to setTimeout in alert action creator */
+  animation: fade-in-out ease-out 4s;
 }
 
 .btn-primary,

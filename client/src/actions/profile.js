@@ -44,7 +44,8 @@ export const createProfile = (
 
     dispatch(setAlert(edit ? 'Profile updated' : 'Profile created', 'success'));
 
-    // If creating a new profile, redirect. Can't use React Router <Redirect /> in a Redux action creator, so using this here, so passing in history object that has push method on it. Have to import withRouter from React Router in CreateProfile component in order to use/pass history object
+    // If creating a new profile, redirect. Can't use React Router <Redirect /> in a Redux action creator, so using this here, passing in history object that has push method on it. (Pushes a new entry into the history stack, redirecting the user to another route.) Have to import withRouter from React Router in CreateProfile component in order to use/pass history object
+    // https://reacttraining.com/react-router/web/api/history
     if (!edit) {
       history.push('/dashboard');
     }
