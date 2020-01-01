@@ -35,7 +35,6 @@ const App = () => {
         <Route exact path="/" component={Landing} />
         {/* Every page within theme except landing page has a class of container to center everything */}
         <div className="container">
-          <Alert />
           <Switch>
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
@@ -46,6 +45,7 @@ const App = () => {
               component={CreateProfile}
             />
           </Switch>
+          <Alert />
         </div>
       </Router>
     </Provider>

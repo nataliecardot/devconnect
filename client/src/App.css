@@ -1,10 +1,11 @@
 /* Global styles (:root is a pseudo-class). Used in conjunction with var() CSS function, can be used to insert the value of a custom property (sometimes called a "CSS variable") instead of any part of a value of another property */
 :root {
+  /* View color palette https://coolors.co/e2717c-ffa69e-e4e4e4-76cea2-343a40 */
   --primary-color: #e2717c;
   --dark-color: #343a40;
   --light-color: #e4e4e4;
-  --danger-color: #dc3545;
-  --success-color: #28a745;
+  --danger-color: #ffa69e;
+  --success-color: #76cea2;
   --border-radius: 5px;
   --form-elem-border-radius: 3px;
 }

@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+// withRouter is to redirect from the action creator. Allows use of history object (see create/update profile action creator in actions/profile.js)
+import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { createProfile } from '../../actions/profile';
 
-const CreateProfile = props => {
+const CreateProfile = ({ createProfile, history }) => {
   const [formData, setFormData] = useState({
     company: '',
     website: '',
@@ -39,6 +42,11 @@ const CreateProfile = props => {
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  const onSubmit = e => {
+    e.preventDefault();
+    createProfile(formData, history);
+  };
+
   return (
     <>
       <h1 className="large text-primary">Create Your Profile</h1>
@@ -47,13 +55,9 @@ const CreateProfile = props => {
         profile stand out
       </p>
       <small>* = required field</small>
-      <form className="form">
+      <form className="form" onSubmit={e => onSubmit(e)}>
         <div className="form-group">
-          <select
-            name="status"
-            value={status}
-            onChange={() => onChange(e => onChange(e))}
-          >
+          <select name="status" value={status} onChange={e => onChange(e)}>
             <option value="0">* Select professional status</option>
             <option value="Developer">Developer</option>
             <option value="Junior developer">Junior developer</option>
@@ -221,6 +225,9 @@ const CreateProfile = props => {
   );
 };
 
-CreateProfile.propTypes = {};
+CreateProfile.propTypes = {
+  createProfile: PropTypes.func.isRequired
+};
 
-export default CreateProfile;
+// withRouter enables passing in history object and using it from the action creator
+export default connect(null, { createProfile })(withRouter(CreateProfile));
