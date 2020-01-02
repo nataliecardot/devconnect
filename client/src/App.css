@@ -1,7 +1,7 @@
 /* Global styles (:root is a pseudo-class). Used in conjunction with var() CSS function, can be used to insert the value of a custom property (sometimes called a "CSS variable") instead of any part of a value of another property */
 :root {
   /* View color palette https://coolors.co/e2717c-ffa69e-e4e4e4-76cea2-343a40 */
-  --primary-color: #e2717c;
+  --primary-color: #f67280;
   --dark-color: #343a40;
   --light-color: #e4e4e4;
   --danger-color: #ffa69e;
@@ -26,6 +26,8 @@ body {
   line-height: 1.6;
   background-color: #fff;
   color: #333;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -64,8 +66,17 @@ img {
 }
 
 .lead {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
+  color: #495057;
+  text-align: center;
+}
+
+.lead-landing {
+  font-size: 1.4rem;
+  margin: 1rem 0 3rem;
+  letter-spacing: 1px;
 }
 
 .text-center {
@@ -146,6 +157,12 @@ img {
   margin: 3rem 0;
 }
 
+.dash-buttons {
+  margin: 2rem 0;
+  /* Centers links styled as buttons since they are display: inline-block */
+  text-align: center;
+}
+
 .btn {
   border-radius: var(--border-radius);
   display: inline-block;
@@ -169,7 +186,7 @@ h1 {
 }
 
 .fa-spinner {
-  color: #adb5bd;
+  color: #f8b195;
   padding: 1rem;
 }
 
@@ -201,7 +218,7 @@ h1 {
   background: var(--light-color);
   color: #333;
   /* Seconds corresponds to milliseconds passed in to setTimeout in alert action creator */
-  animation: fade-in-out ease-out 4s;
+  animation: fade-in-out ease-out 5s;
 }
 
 .btn-primary,
@@ -355,6 +372,7 @@ button {
 .table th {
   background: var(--light-color);
 }
+
 
 /* Navbar */
 .navbar {

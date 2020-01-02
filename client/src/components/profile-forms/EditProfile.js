@@ -130,9 +130,7 @@ const EditProfile = ({
             value={location}
             onChange={e => onChange(e)}
           />
-          <small className="form-text">
-            City & state suggested (e.g., Boston, MA)
-          </small>
+          <small className="form-text">Example: Boston, MA</small>
         </div>
         <div className="form-group">
           <input
