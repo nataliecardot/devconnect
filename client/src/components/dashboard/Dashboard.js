@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import DashboardActions from './DashboardActions';
+import Experience from './Experience';
+import Education from './Education';
 import { getCurrentProfile } from '../../actions/profile';
 
 const Dashboard = ({
@@ -25,7 +27,11 @@ const Dashboard = ({
         <i className="fas fa-user"></i> Welcome, {user && user.name}!
       </p>
       {profile ? (
-        <DashboardActions />
+        <>
+          <DashboardActions />
+          <Experience experience={profile.experience} />
+          <Education education={profile.education} />
+        </>
       ) : (
         <>
           <p>You haven't added any profile information.</p>
@@ -45,6 +51,7 @@ Dashboard.propTypes = {
 };
 
 const mapStateToProps = state => ({
+  // Reminder: auth and profile as named in root reducer
   auth: state.auth,
   profile: state.profile
 });

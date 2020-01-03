@@ -77,7 +77,7 @@ const EditProfile = ({
   return (
     <>
       <h1 className="large text-primary">Edit Your Profile</h1>
-      <p className="lead text-center">
+      <p className="lead">
         <i className="fas fa-user"></i> Update your details
       </p>
       <small>* = required field</small>

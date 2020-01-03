@@ -41,7 +41,6 @@ const Login = ({ login, isAuthenticated }) => {
             name="email"
             value={email}
             onChange={e => onChange(e)}
-            required // HTML5 client-side validation (also have server-side validation)
           />
         </div>
         <div className="form-group">

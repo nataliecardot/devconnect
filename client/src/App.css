@@ -1,7 +1,7 @@
 /* Global styles (:root is a pseudo-class). Used in conjunction with var() CSS function, can be used to insert the value of a custom property (sometimes called a "CSS variable") instead of any part of a value of another property */
 :root {
   /* View color palette https://coolors.co/e2717c-ffa69e-e4e4e4-76cea2-343a40 */
-  --primary-color: #f67280;
+  --primary-color: #f87b65;
   --dark-color: #343a40;
   --light-color: #e4e4e4;
   --danger-color: #ffa69e;
@@ -45,8 +45,7 @@ img {
 
 /* Utilities */
 .container {
-  /* TODO: Change back to 1100? */
-  max-width: 800px;
+  max-width: 1100px;
   margin: 6rem auto 3rem auto;
   overflow: hidden;
   padding: 0 2rem;
@@ -62,6 +61,7 @@ img {
 .large {
   font-size: 3rem;
   line-height: 1.2;
+  font-weight: lighter;
   margin-bottom: 1rem;
 }
 
@@ -70,7 +70,6 @@ img {
   margin-bottom: 1.5rem;
   letter-spacing: 0.5px;
   color: #495057;
-  text-align: center;
 }
 
 .lead-landing {
@@ -158,9 +157,7 @@ img {
 }
 
 .dash-buttons {
-  margin: 2rem 0;
-  /* Centers links styled as buttons since they are display: inline-block */
-  text-align: center;
+  margin: 3.5rem 0;
 }
 
 .btn {
@@ -175,10 +172,6 @@ img {
   margin-right: 0.8rem;
   transition: opacity 0.2s ease-in;
   outline: none;
-}
-
-h1 {
-  text-align: center;
 }
 
 .spinner {
@@ -318,7 +311,7 @@ h1 {
 .form textarea {
   border-radius: var(--form-elem-border-radius);
   display: block;
-  width: 100%;
+  width: 60%;
   padding: 0.4rem;
   font-size: 1.2rem;
   border: 1px solid #ccc;
@@ -363,16 +356,23 @@ button {
   color: #0077b5;
 }
 
+.table {
+  width: 100%;
+}
+
+.dashboard-experience-table {
+  margin-bottom: 5rem;
+}
+
 .table th,
 .table td {
   padding: 1rem;
-  text-align: left;
+  text-align: center;
 }
 
 .table th {
   background: var(--light-color);
 }
-
 
 /* Navbar */
 .navbar {
@@ -574,6 +574,15 @@ button {
 @media (max-width: 700px) {
   .container {
     margin-top: 8rem;
+  }
+
+  .form input[type="text"],
+  .form input[type="email"],
+  .form input[type="password"],
+  .form input[type="date"],
+  .form select,
+  .form textarea {
+    width: 100%;
   }
 
   .hide-sm {
