@@ -54,7 +54,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             name="name"
             value={name}
             onChange={e => onChange(e)}
-            required // HTML5 client-side form validation (also have server-side validation)
           />
         </div>
         <div className="form-group">
@@ -64,7 +63,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             name="email"
             value={email}
             onChange={e => onChange(e)}
-            required
           />
           <small className="form-text">
             If you want a profile image, use an email associated with a Gravatar
