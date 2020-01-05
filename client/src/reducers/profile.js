@@ -49,11 +49,12 @@ export default function(state = initialState, action) {
         loading: false
       };
     case GET_REPOS:
-    default:
       return {
         ...state,
         repos: payload,
         loading: false
       };
+    default:
+      return state;
   }
 }
