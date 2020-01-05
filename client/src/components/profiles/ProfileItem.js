@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+const uuidv4 = require('uuid/v4');
 
 const ProfileItem = ({
   profile: {
@@ -13,7 +14,7 @@ const ProfileItem = ({
 }) => {
   return (
     <div className="profile bg-light">
-      <img src={avatar} alt="Profile photo" className="round-img" />
+      <img src={avatar} alt="" className="round-img" />
       <div>
         <h2>{name}</h2>
         <p>
@@ -25,8 +26,8 @@ const ProfileItem = ({
         </Link>
       </div>
       <ul>
-        {skills.slice(0, 4).map((skill, index) => (
-          <li key={index} className="text-primary">
+        {skills.slice(0, 4).map(skill => (
+          <li key={uuidv4()} className="text-primary">
             <i className="fas fa-check" /> {skill}
           </li>
         ))}
