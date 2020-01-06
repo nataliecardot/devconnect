@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import ProfileTop from './ProfileTop';
+import ProfileAbout from './ProfileAbout';
 import { getProfileById } from '../../actions/profile';
 
 // Getting id from URL. You can get it from props.match.params.[whatever the param is, in this case id]. Destructuring it out of props (could destructure further)
@@ -35,6 +36,7 @@ const Profile = ({
             )}
           <div className="profile-grid my-1">
             <ProfileTop profile={profile} />
+            <ProfileAbout profile={profile} />
           </div>
         </>
       )}
