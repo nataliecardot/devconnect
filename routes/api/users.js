@@ -48,9 +48,9 @@ router.post(
 
       // Get user's gravatar (based on email)
       const avatar = gravatar.url(email, {
-        s: '200', // Size
+        s: '250', // Size
         r: 'pg', // Rating
-        d: 'mm' // Gives default icon if no Gravatar image found
+        d: 'mm' // Gives default icon if no Gravatar image found (mm stands for mystery man)
       });
 
       // Doesn't save the user, just creates a new instance -- have to do user.save() in order to save to database
