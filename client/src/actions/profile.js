@@ -143,7 +143,7 @@ export const addExperience = (formData, history) => async dispatch => {
       payload: res.data // Will be the profile
     });
 
-    dispatch(setAlert('Experience added', 'success'));
+    dispatch(setAlert('Experience credential added', 'success'));
 
     history.push('/dashboard');
   } catch (err) {
@@ -176,7 +176,7 @@ export const addEducation = (formData, history) => async dispatch => {
       payload: res.data // Will be the profile
     });
 
-    dispatch(setAlert('Education added', 'success'));
+    dispatch(setAlert('Education credential added', 'success'));
 
     history.push('/dashboard');
   } catch (err) {
