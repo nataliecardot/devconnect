@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createProfile } from '../../actions/profile';
+import Alert from '../layout/Alert';
 
 const CreateProfile = ({ createProfile, history }) => {
   const [formData, setFormData] = useState({
@@ -219,6 +220,7 @@ const CreateProfile = ({ createProfile, history }) => {
           Go Back
         </Link>
       </form>
+      <Alert />
     </div>
   );
 };

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // Used for both CreateProfile and EditProfile components. Also need getCurrentProfile to prefill fields with existing profile data
 import { createProfile, getCurrentProfile } from '../../actions/profile';
+import Alert from '../layout/Alert';
 
 const EditProfile = ({
   profile: { profile, loading },
@@ -75,7 +76,7 @@ const EditProfile = ({
   };
 
   return (
-    <>
+    <div className="narrow-container">
       <h1 className="large text-primary">Edit Your Profile</h1>
       <p className="lead">
         <i className="fas fa-user" /> Update your details
@@ -245,7 +246,8 @@ const EditProfile = ({
           Go Back
         </Link>
       </form>
-    </>
+      <Alert />
+    </div>
   );
 };
 

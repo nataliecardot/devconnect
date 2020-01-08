@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
+import Alert from '../layout/Alert';
 
 // Destructuring props so can simply use (e.g.) setAlert rather than props.setAlert (setAlert prop coming from passing it into connect function at bottom [mapDispatchToProps])
 const Register = ({ setAlert, register, isAuthenticated }) => {
@@ -94,6 +95,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
       <p className="my-1">
         Already have an account? <Link to="/login">Sign in</Link>
       </p>
+      <Alert />
     </div>
   );
 };

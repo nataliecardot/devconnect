@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addEducation } from '../../actions/profile';
+import Alert from '../layout/Alert';
 
 const AddEducation = ({ addEducation, history }) => {
   const [formData, setFormData] = useState({
@@ -124,6 +125,7 @@ const AddEducation = ({ addEducation, history }) => {
           Go Back
         </Link>
       </form>
+      <Alert />
     </div>
   );
 };

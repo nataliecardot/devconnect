@@ -8,6 +8,7 @@ import DashboardActions from './DashboardActions';
 import Experience from './Experience';
 import Education from './Education';
 import { getCurrentProfile, deleteAccount } from '../../actions/profile';
+import Alert from '../layout/Alert';
 
 const Dashboard = ({
   getCurrentProfile,
@@ -30,6 +31,7 @@ const Dashboard = ({
       {profile ? (
         <>
           <DashboardActions />
+          <Alert />
           {profile.experience.length > 0 && (
             <Experience experience={profile.experience} />
           )}

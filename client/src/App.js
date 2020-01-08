@@ -6,7 +6,6 @@ import Landing from './components/layout/Landing';
 import Navbar from './components/layout/Navbar';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
-import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
 import CreateProfile from './components/profile-forms/CreateProfile';
 import EditProfile from './components/profile-forms/EditProfile';
@@ -63,7 +62,6 @@ const App = () => {
               component={AddEducation}
             />
           </Switch>
-          <Alert />
         </div>
       </Router>
     </Provider>
