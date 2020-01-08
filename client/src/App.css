@@ -1,6 +1,6 @@
 /* Global styles (:root is a pseudo-class). Used in conjunction with var() CSS function, can be used to insert the value of a custom property (sometimes called a "CSS variable") instead of any part of a value of another property */
 :root {
-  --primary-color: #7cafc4;
+  --primary-color: #0091ea;
   --dark-color: #343a40;
   --light-color: #e4e4e4;
   --danger-color: #ef5350;
@@ -47,10 +47,16 @@ img {
 
 /* Utilities */
 .container {
-  max-width: 800px;
+  max-width: 1100px;
   margin: 6rem auto 3rem auto;
   overflow: hidden;
   padding: 0 2rem;
+}
+
+/* to apply a smaller max-width to any pages with forms, so inputs aren't as long */
+.narrow-container {
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 /* Text styles */
@@ -204,7 +210,7 @@ img {
     opacity: 0.5;
   }
   50% {
-    opacity: 1;
+    opacity: 0.9;
   }
   100% {
     opacity: 0;
@@ -213,14 +219,17 @@ img {
 
 .alert {
   padding: 0.8rem;
-  margin: 1rem 0;
+  text-align: center;
+  /* Matches max-width set in .narrow-container class */
+  max-width: 700px;
+  margin: 1rem auto;
   opacity: 0.9;
   background: var(--light-color);
   border-radius: var(--border-radius);
   box-shadow: var(--small-box-shadow);
   color: #333;
   /* Seconds corresponds to milliseconds passed in to setTimeout in alert action creator */
-  animation: fade-in-out ease-out 5s;
+  animation: fade-in-out ease-out 4s;
 }
 
 .btn-primary,
@@ -269,7 +278,7 @@ img {
 .alert-white {
   background: #fff;
   color: #333;
-  border: #ccc solid 1px;
+  border: #ccc solid 0.9px;
 }
 
 .btn:hover {
@@ -278,7 +287,7 @@ img {
 
 .bg-light,
 .badge-light {
-  border: #ccc solid 1px;
+  border: #ccc solid 0.9px;
 }
 
 .round-img {
@@ -498,10 +507,14 @@ button {
 
 .profile-exp {
   grid-area: exp;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
 }
 
 .profile-edu {
   grid-area: edu;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
 }
 
 .profile-exp h2,

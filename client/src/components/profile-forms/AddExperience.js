@@ -23,7 +23,7 @@ const AddExperience = ({ addExperience, history }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   return (
-    <>
+    <div className="narrow-container">
       <h1 className="large text-primary">Add Experience</h1>
       <p className="lead">
         <i className="fas fa-code-branch" /> Add any
@@ -115,7 +115,7 @@ const AddExperience = ({ addExperience, history }) => {
           Go Back
         </Link>
       </form>
-    </>
+    </div>
   );
 };
 

@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import ProfileTop from './ProfileTop';
 import ProfileAbout from './ProfileAbout';
+import ProfileExperience from './ProfileExperience';
+import ProfileEducation from './ProfileEducation';
 import { getProfileById } from '../../actions/profile';
 
 // Getting id from URL. You can get it from props.match.params.[whatever the param is, in this case id]. Destructuring it out of props (could destructure further)
@@ -37,6 +39,37 @@ const Profile = ({
           <div className="profile-grid my-1">
             <ProfileTop profile={profile} />
             <ProfileAbout profile={profile} />
+            <div className="profile-exp bg-white p-2">
+              <h2 className="text-primary">Experience</h2>
+              {profile.experience.length > 0 ? (
+                <>
+                  {profile.experience.map(experience => (
+                    <ProfileExperience
+                      key={experience._id}
+                      experience={experience}
+                    />
+                  ))}
+                </>
+              ) : (
+                <p>No experience credentials provided</p>
+              )}
+            </div>
+
+            <div className="profile-edu bg-white p-2">
+              <h2 className="text-primary">Education</h2>
+              {profile.education.length > 0 ? (
+                <>
+                  {profile.education.map(education => (
+                    <ProfileEducation
+                      key={education._id}
+                      education={education}
+                    />
+                  ))}
+                </>
+              ) : (
+                <p>No education credentials provided</p>
+              )}
+            </div>
           </div>
         </>
       )}

@@ -31,7 +31,7 @@ const AddEducation = ({ addEducation, history }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   return (
-    <>
+    <div className="narrow-container">
       <h1 className="large text-primary">Add Your Education</h1>
       <p className="lead">
         <i className="fas fa-code-branch" /> Add a school or bootcamp you've
@@ -124,7 +124,7 @@ const AddEducation = ({ addEducation, history }) => {
           Go Back
         </Link>
       </form>
-    </>
+    </div>
   );
 };
 

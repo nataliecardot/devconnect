@@ -41,7 +41,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   }
 
   return (
-    <>
+    <div className="narrow-container">
       <h1 className="large text-primary">Sign Up</h1>
       <p className="lead">
         <i className="fas fa-user"></i> &nbsp;Create your account
@@ -94,7 +94,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
       <p className="my-1">
         Already have an account? <Link to="/login">Sign in</Link>
       </p>
-    </>
+    </div>
   );
 };
 
