@@ -1,6 +1,6 @@
 /* Global styles (:root is a pseudo-class). Used in conjunction with var() CSS function, can be used to insert the value of a custom property (sometimes called a "CSS variable") instead of any part of a value of another property */
 :root {
-  --primary-color: #1c8cd1;
+  --primary-color: #2c9be0;
   --dark-color: #343a40;
   --light-color: #e4e4e4;
   --danger-color: #ef5350;
@@ -188,7 +188,7 @@ img {
 }
 
 .fa-spinner {
-  color: var(--light-color);
+  color: #ccc;
   padding: 1rem;
 }
 
