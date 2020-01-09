@@ -1,6 +1,6 @@
 /* Global styles (:root is a pseudo-class). Used in conjunction with var() CSS function, can be used to insert the value of a custom property (sometimes called a "CSS variable") instead of any part of a value of another property */
 :root {
-  --primary-color: #0091ea;
+  --primary-color: #1c8cd1;
   --dark-color: #343a40;
   --light-color: #e4e4e4;
   --danger-color: #ef5350;
@@ -188,7 +188,7 @@ img {
 }
 
 .fa-spinner {
-  color: #cfe1e9;
+  color: var(--light-color);
   padding: 1rem;
 }
 
@@ -198,11 +198,16 @@ img {
 
 .badge {
   font-size: 0.8rem;
-  padding: 0.1rem;
+  padding: 0.5rem;
   text-align: center;
-  margin: 0.3rem;
+  border-radius: var(--border-radius);
+  margin: 0 0 0.5rem 0.7rem;
   background: var(--light-color);
   color: #333;
+}
+
+.badge:last-of-type {
+  margin-bottom: 0;
 }
 
 @keyframes fade-in-out {
@@ -543,13 +548,15 @@ button {
 
 .profile-github .repo {
   display: flex;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
 }
 
 .profile-github .repo > div:first-child {
   /* flex: One value, unitless number: flex-grow */
-  /* flex: 1 30px -- 2 values here would be flex-grow | flex-basis */
+  /* flex: 1 30px -- two values here means flex-grow | flex-basis */
   /* flex-grow: Specifies how much of the remaining space in the flex container should be assigned to the item */
-  /* flex-bases: Sets the initial main size of a flex item */
+  /* flex-basis: Sets the initial main size of a flex item */
   flex: 7;
   flex-basis: 70%;
 }
@@ -602,15 +609,6 @@ button {
 
   .landing-inner {
     width: 80%;
-  }
-
-  .form input[type="text"],
-  .form input[type="email"],
-  .form input[type="password"],
-  .form input[type="date"],
-  .form select,
-  .form textarea {
-    width: 100%;
   }
 
   .hide-sm {

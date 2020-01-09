@@ -7,6 +7,7 @@ import ProfileTop from './ProfileTop';
 import ProfileAbout from './ProfileAbout';
 import ProfileExperience from './ProfileExperience';
 import ProfileEducation from './ProfileEducation';
+import ProfileGitHub from './ProfileGitHub';
 import { getProfileById } from '../../actions/profile';
 
 // Getting id from URL. You can get it from props.match.params.[whatever the param is, in this case id]. Destructuring it out of props (could destructure further)
@@ -70,6 +71,10 @@ const Profile = ({
                 <p>No education credentials provided</p>
               )}
             </div>
+
+            {profile.githubusername && (
+              <ProfileGitHub username={profile.githubusername} />
+            )}
           </div>
         </>
       )}
