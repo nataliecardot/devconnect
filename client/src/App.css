@@ -482,6 +482,11 @@ button {
   box-shadow: var(--box-shadow);
 }
 
+.location {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
 .profile-top img {
   width: 250px;
 }
