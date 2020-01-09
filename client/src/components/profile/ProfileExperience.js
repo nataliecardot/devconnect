@@ -9,8 +9,8 @@ const ProfileExperience = ({
   <div>
     <h3 className="text-dark">{company}</h3>
     <p>
-      <Moment format="YYYY/MM/DD">{moment.utc(from)}</Moment> –{' '}
-      {!to ? ' Present' : <Moment format="YYYY/MM/DD">{moment.utc(to)}</Moment>}
+      <Moment format="MM-DD-YYYY">{moment.utc(from)}</Moment> –{' '}
+      {!to ? ' Present' : <Moment format="MM-DD-YYYY">{moment.utc(to)}</Moment>}
     </p>
     <p>
       <strong>Position: </strong> {title}

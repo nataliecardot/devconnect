@@ -154,7 +154,7 @@ const EditProfile = ({
             onChange={e => onChange(e)}
           />
           <small className="form-text">
-            If you want your latest repos and a GitHub link, include your
+            If you want to display your latest GitHub repositories, include your
             username
           </small>
         </div>

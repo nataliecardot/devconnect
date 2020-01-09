@@ -75,15 +75,23 @@ router.post(
     const profileFields = {};
     // User ID is from token that was sent
     profileFields.user = req.user.id;
-    if (company) profileFields.company = company;
-    if (website) profileFields.website = website;
-    if (location) profileFields.location = location;
-    if (bio) profileFields.bio = bio;
-    if (status) profileFields.status = status;
-    if (githubusername) profileFields.githubusername = githubusername;
-    if (skills) {
-      profileFields.skills = skills.split(',').map(skill => skill.trim());
-    }
+    company
+      ? (profileFields.company = company)
+      : (profileFields.company = null);
+    website
+      ? (profileFields.website = website)
+      : (profileFields.website = null);
+    location
+      ? (profileFields.location = location)
+      : (profileFields.location = null);
+    bio ? (profileFields.bio = bio) : (profileFields.bio = null);
+    status ? (profileFields.status = status) : (profileFields.status = null);
+    githubusername
+      ? (profileFields.githubusername = githubusername)
+      : (profileFields.githubusername = null);
+    skills
+      ? (profileFields.skills = skills.split(',').map(skill => skill.trim()))
+      : (profileFields.skills = null);
 
     // Build social object that receives the incoming youtube, twitter, etc., strings that were destructured from the req.body object (if they exist)
 

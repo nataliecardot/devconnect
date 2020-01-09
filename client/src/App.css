@@ -457,6 +457,7 @@ button {
   line-height: 1.8;
   margin-bottom: 1.5rem;
   border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
 }
 
 /* Profile page */
