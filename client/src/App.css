@@ -12,10 +12,6 @@
   --small-box-shadow: 0 4px 7px rgba(66, 66, 66, 0.19), 0 2px 3px rgba(39, 39, 39, 0.23);
 }
 
-i {
-  padding-right: 0.25rem;
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -47,7 +43,7 @@ img {
 
 /* Utilities */
 .container {
-  max-width: 1100px;
+  max-width: 950px;
   margin: 6rem auto 3rem auto;
   overflow: hidden;
   padding: 0 2rem;
@@ -55,7 +51,7 @@ img {
 
 /* to apply a smaller max-width to any pages with forms, so inputs aren't as long */
 .narrow-container {
-  max-width: 700px;
+  max-width: 650px;
   margin: 0 auto;
 }
 
@@ -188,7 +184,8 @@ img {
 }
 
 .fa-spinner {
-  color: #ccc;
+  margin-top: 5rem;
+  color: var(--primary-color);
   padding: 1rem;
 }
 
@@ -583,6 +580,8 @@ button {
   grid-template-columns: 1fr 4fr;
   grid-gap: 2rem;
   align-items: center;
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
 }
 
 .post > div:first-child {
