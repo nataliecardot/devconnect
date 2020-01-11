@@ -504,6 +504,12 @@ button {
   box-shadow: var(--box-shadow);
 }
 
+.profile-about p {
+  text-align: justify;
+  width: 70%;
+  margin: auto;
+}
+
 .profile-about .skills {
   display: flex;
   align-items: center;
@@ -590,6 +596,10 @@ button {
 
 .post img {
   width: 100px;
+}
+
+.post p {
+  width: 95%;
 }
 
 .post .comment-count {
@@ -682,6 +692,11 @@ button {
     flex-direction: column;
   }
 
+  .profile-about p {
+    width: 100%;
+    text-align: left;
+  }
+
   .dash-buttons a {
     display: block;
     width: 100%;
@@ -691,6 +706,11 @@ button {
   .post {
     grid-template-columns: 1fr;
   }
+
+  .post p {
+    width: 100%;
+  }
+
   .post a,
   .post button {
     padding: 0.3rem 0.4rem;
