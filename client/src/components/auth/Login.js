@@ -34,14 +34,15 @@ const Login = ({ login, isAuthenticated }) => {
       <p className="lead">
         <i className="fas fa-user"></i> Access your account
       </p>
-      <form className="form" onSubmit={e => onSubmit(e)}>
+      {/* By default an event handler, like onClick, passes an event back to a callback function. So, onClick={handleClick} will pass back an event to the callback handleClick. Therefore, you don't need to create an anonymous function: onClick={e => handleClick(e)} as this is redundant. There will be situations will you'll need to pass back more than an event, then you can use an anonymous function; otherwise, it's not necessary */}
+      <form className="form" onSubmit={onSubmit}>
         <div className="form-group">
           <input
             type="email"
             placeholder="Email address"
             name="email"
             value={email}
-            onChange={e => onChange(e)}
+            onChange={onChange}
           />
         </div>
         <div className="form-group">
@@ -51,7 +52,7 @@ const Login = ({ login, isAuthenticated }) => {
             name="password"
             minLength="6"
             value={password}
-            onChange={e => onChange(e)}
+            onChange={onChange}
           />
         </div>
         <input type="submit" className="btn btn-primary" value="Log in" />

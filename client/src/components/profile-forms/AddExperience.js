@@ -44,7 +44,7 @@ const AddExperience = ({ addExperience, history }) => {
             placeholder="* Job title"
             name="title"
             value={title}
-            onChange={e => onChange(e)}
+            onChange={onChange}
           />
         </div>
         <div className="form-group">
@@ -53,7 +53,7 @@ const AddExperience = ({ addExperience, history }) => {
             placeholder="* Company"
             name="company"
             value={company}
-            onChange={e => onChange(e)}
+            onChange={onChange}
           />
         </div>
         <div className="form-group">
@@ -62,7 +62,7 @@ const AddExperience = ({ addExperience, history }) => {
             placeholder="Location"
             name="location"
             value={location}
-            onChange={e => onChange(e)}
+            onChange={onChange}
           />
           <small className="form-text">Example: Boston, MA</small>
         </div>
@@ -73,7 +73,7 @@ const AddExperience = ({ addExperience, history }) => {
             name="from"
             id="from"
             value={from}
-            onChange={e => onChange(e)}
+            onChange={onChange}
           />
         </div>
         <div className="form-group">
@@ -97,7 +97,7 @@ const AddExperience = ({ addExperience, history }) => {
             name="to"
             id="to"
             value={to}
-            onChange={e => onChange(e)}
+            onChange={onChange}
             disabled={toDateDisabled ? 'disabled' : ''}
           />
         </div>
@@ -108,7 +108,7 @@ const AddExperience = ({ addExperience, history }) => {
             rows="5"
             placeholder="Job description"
             value={description}
-            onChange={e => onChange(e)}
+            onChange={onChange}
           />
         </div>
         <input type="submit" className="btn btn-primary my-1" />

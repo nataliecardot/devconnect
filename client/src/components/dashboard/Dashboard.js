@@ -42,7 +42,7 @@ const Dashboard = ({
           <div className="my-2">
             <button
               className="btn btn-danger delete-account-btn"
-              onClick={() => deleteAccount()}
+              onClick={deleteAccount}
             >
               <i className="fas fa-user-minus"></i> Delete My Account
             </button>

@@ -47,14 +47,14 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
       <p className="lead">
         <i className="fas fa-user"></i> Create your account
       </p>
-      <form className="form" onSubmit={e => onSubmit(e)}>
+      <form className="form" onSubmit={onSubmit}>
         <div className="form-group">
           <input
             type="text"
             placeholder="Name"
             name="name"
             value={name}
-            onChange={e => onChange(e)}
+            onChange={onChange}
           />
         </div>
         <div className="form-group">
@@ -63,7 +63,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             placeholder="Email address"
             name="email"
             value={email}
-            onChange={e => onChange(e)}
+            onChange={onChange}
           />
           <small className="form-text">
             If you want a profile image, use an email associated with a Gravatar
@@ -77,7 +77,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             name="password"
             minLength="6"
             value={password}
-            onChange={e => onChange(e)}
+            onChange={onChange}
           />
         </div>
         <div className="form-group">
@@ -87,7 +87,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             name="password2"
             minLength="6"
             value={password2}
-            onChange={e => onChange(e)}
+            onChange={onChange}
           />
         </div>
         <input type="submit" className="btn btn-primary" value="Register" />
