@@ -43,7 +43,7 @@ img {
 
 /* Utilities */
 .container {
-  max-width: 950px;
+  max-width: 900px;
   margin: 6rem auto 3rem auto;
   overflow: hidden;
   padding: 0 2rem;
@@ -55,7 +55,18 @@ img {
   margin: 0 auto;
 }
 
+/* Used by 'say something' text in PostForm component */
+.say-something {
+  border-radius: var(--border-radius);
+}
+
 /* Text styles */
+
+/* Used by 'say something' text in PostForm component */
+.h3 {
+  font-size: 1.2rem;
+}
+
 .x-large {
   font-size: 4rem;
   line-height: 1.2;
@@ -100,7 +111,7 @@ img {
 
 /* Padding */
 .p {
-  padding: 0.5rem;
+  padding: 0.75rem;
 }
 
 .p-1 {
