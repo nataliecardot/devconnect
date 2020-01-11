@@ -32,7 +32,7 @@ const Experience = ({ experience, deleteExperience }) => {
   return (
     <>
       <h2 className="my-2">Experience Credentials</h2>
-      <table className="table dashboard-experience-table">
+      <table className="table">
         <thead>
           <tr>
             <th>Company</th>

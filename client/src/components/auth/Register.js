@@ -45,7 +45,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     <div className="narrow-container">
       <h1 className="large text-primary">Sign Up</h1>
       <p className="lead">
-        <i className="fas fa-user"></i> &nbsp;Create your account
+        <i className="fas fa-user"></i> Create your account
       </p>
       <form className="form" onSubmit={e => onSubmit(e)}>
         <div className="form-group">
