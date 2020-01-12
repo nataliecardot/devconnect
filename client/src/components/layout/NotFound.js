@@ -7,7 +7,9 @@ export const NotFound = () => {
         <i className="fas fa-exclamation-triangle" /> Page Not Found
       </h1>
 
-      <p className="large text-center">Sorry, this page does not exist.</p>
+      <p className="large text-center">
+        Sorry, the page you requested does not exist.
+      </p>
     </div>
   );
 };
