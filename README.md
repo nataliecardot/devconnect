@@ -2,6 +2,10 @@
 
 A social network for developers, built on the MERN stack.
 
+Built using React and Redux and the front end, and Node.js, Express, MongoDB, and Mongoose on the back end.
+
+Created as part of Brad Traversy's Udemy course "MERN Stack Front To Back: Full Stack React, Redux & Node.js."
+
 ### Quick Start
 
 To run locally, you will need to create a cluster with MongoDB Atlas and connect to it. Using the connection string, insert into the file `config/defaultSAMPLE.js` and remove "SAMPLE" from the file name.
