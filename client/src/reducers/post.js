@@ -1,10 +1,12 @@
 import {
   GET_POSTS,
   GET_POST,
+  ADD_POST,
+  DELETE_POST,
   POST_ERROR,
   UPDATE_LIKES,
-  DELETE_POST,
-  ADD_POST
+  ADD_COMMENT,
+  DELETE_COMMENT
 } from '../actions/types';
 
 const initialState = {
@@ -55,6 +57,25 @@ export default function(state = initialState, action) {
         posts: state.posts.map(post =>
           post._id === payload.id ? { ...post, likes: payload.likes } : post
         ),
+        loading: false
+      };
+    case ADD_COMMENT:
+      return {
+        ...state,
+        // Only need to manipulate post since it will be on single post page. Payload is an array of comments for the post
+        post: { ...state.post, comments: payload },
+        loading: false
+      };
+    case DELETE_COMMENT:
+      return {
+        ...state,
+        // The payload is the comment ID
+        post: {
+          ...state.post,
+          comments: state.post.comments.filter(
+            comment => comment._id !== payload
+          )
+        },
         loading: false
       };
     default:

@@ -55,14 +55,12 @@ img {
   margin: 0 auto;
 }
 
-/* Used by 'say something' text in PostForm component */
-.say-something {
+.banner-text {
   border-radius: var(--border-radius);
 }
 
 /* Text styles */
 
-/* Used by 'say something' text in PostForm component */
 .h3 {
   font-size: 1.2rem;
 }

@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import PostItem from '../posts/PostItem';
+import CommentForm from '../post/CommentForm';
 import { getPost } from '../../actions/post';
+import Alert from '../layout/Alert';
 
 // React Router supplies any dynamic pieces of the URL to the component via an object called match.params as own props of the related component (the route for this component has path="/post:id")
 const Post = ({ getPost, post: { post, loading }, match }) => {
@@ -16,10 +18,12 @@ const Post = ({ getPost, post: { post, loading }, match }) => {
     <Spinner />
   ) : (
     <>
+      <Alert />
       <Link to="/posts" className="btn">
         Back to Post
       </Link>
       <PostItem post={post} showActions={false} />
+      <CommentForm postId={post._id} />
     </>
   );
 };
