@@ -61,8 +61,8 @@ const CreateProfile = ({ createProfile, history }) => {
           <select name="status" value={status} onChange={onChange}>
             <option value="0">* Select professional status</option>
             <option value="Developer">Developer</option>
-            <option value="Junior developer">Junior developer</option>
-            <option value="Senior developer">Senior developer</option>
+            <option value="Junior Developer">Junior Developer</option>
+            <option value="Senior Developer">Senior Developer</option>
             <option value="Manager">Manager</option>
             <option value="Student or learning">Student or learning</option>
             <option value="Instructor">Instructor or teacher</option>
