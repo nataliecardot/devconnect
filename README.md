@@ -2,7 +2,7 @@
 
 > Social network for developers, built on the MERN stack.
 
-# Visit (https://devconnectonline.herokuapp.com/)
+# Visit: (https://devconnectonline.herokuapp.com/)
 
 Built using React and Redux and the front end, and Node.js, Express, MongoDB, and Mongoose on the back end.
 
