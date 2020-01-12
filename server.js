@@ -1,5 +1,6 @@
 const express = require('express');
 const connectDB = require('./config/db');
+const path = require('path');
 
 const app = express();
 
@@ -10,13 +11,24 @@ connectDB();
 // This binds the express.json() middleware to an instance of the app object. Allows getting data from req.body of POST request
 app.use(express.json());
 
-app.get('/', (req, res) => res.send('API running'));
-
 // Define routes
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/profile', require('./routes/api/profile'));
 app.use('/api/posts', require('./routes/api/posts'));
+
+// Serve static assets in production
+if (process.env.NODE_ENV === 'production') {
+  // Set static folder (want to set index.html in client/build to be static file)
+  app.use(express.static('client/build'));
+
+  // Serve the index.html file
+  // Route to anything aside from the API routes specified above
+  app.get('*', (req, res) => {
+    // path.resolve joins a series of string paths
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 const port = process.env.PORT || 5000;
 

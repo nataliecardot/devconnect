@@ -1,0 +1,6 @@
+{
+  "mongoURI": "mongodb+srv://natalie:natalie123@devconnect-dedro.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "imasecrettoken",
+  "githubClientId": "55741415768e1669920d",
+  "githubClientSecret": "50b0edcefbbe71bfb0c3055de3e5f451b41a0bd2"
+}
