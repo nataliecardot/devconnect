@@ -2,11 +2,11 @@
 
 A social network for developers, built on the MERN stack.
 
+**[View live](https://devconnectonline.herokuapp.com/)**
+
 Built using React and Redux and the front end, and Node.js, Express, MongoDB, and Mongoose on the back end.
 
 Created as part of Brad Traversy's Udemy course "MERN Stack Front To Back: Full Stack React, Redux & Node.js."
-
-**View live [here](https://devconnectonline.herokuapp.com/).**
 
 ### Quick Start
 
