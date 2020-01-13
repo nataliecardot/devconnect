@@ -26,11 +26,14 @@ const ProfileItem = ({
         </Link>
       </div>
       <ul>
-        {skills.slice(0, 4).map(skill => (
-          <li key={uuidv4()} className="text-primary">
-            <i className="fas fa-check" /> {skill}
-          </li>
-        ))}
+        {skills.slice(0, 4).map(skill =>
+          // Conditional prevents display of checkmark with nothing next to it if, say, user ends skills list with a comma (in which case the skill would be an empty string)
+          skill ? (
+            <li key={uuidv4()} className="text-primary">
+              <i className="fas fa-check" /> {skill}
+            </li>
+          ) : null
+        )}
       </ul>
     </div>
   );

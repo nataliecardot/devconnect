@@ -20,11 +20,14 @@ const ProfileAbout = ({
 
     <h2 className="text-primary">Skill Set</h2>
     <div className="skills">
-      {skills.map(skill => (
-        <div key={uuidv4()} className="p-1">
-          <i className="fas fa-check" /> {skill}
-        </div>
-      ))}
+      {skills.map(skill =>
+        // Conditional prevents display of checkmark with nothing next to it if, say, user ends skills list with a comma (in which case the skill would be an empty string)
+        skill ? (
+          <div key={uuidv4()} className="p-1">
+            <i className="fas fa-check" /> {skill}
+          </div>
+        ) : null
+      )}
     </div>
   </div>
 );
