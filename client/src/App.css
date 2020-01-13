@@ -619,7 +619,7 @@ button {
 /* Mobile styles */
 @media (max-width: 700px) {
   .container {
-    margin: 8rem auto 3rem auto;
+    margin: 8rem auto 2rem auto;
   }
 
   .profile-github p {
@@ -712,7 +712,7 @@ button {
   .dash-buttons .btn, .delete-account-btn {
     width: 80%;
     padding: 1rem;
-    margin: 0 auto 1.5rem auto;
+    margin: 0 auto 2.3rem auto;
     /* Needed for margin-left and margin-right value of auto to center, since set to display: inline-block normally (see https://stackoverflow.com/questions/19076919/marginauto-with-inline-block) */
     display: block;
     text-align: center;

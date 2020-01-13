@@ -14,6 +14,8 @@ const ProfileGitHub = ({ username, getGitHubRepos, repos }) => {
       <h2 className="text-primary my-1">GitHub Repos</h2>
       {repos === null ? (
         <Spinner />
+      ) : repos.length === 0 ? (
+        <p>This user doesn't have any repositiories yet.</p>
       ) : (
         repos.map(repo => (
           <div key={repo.id} className="repo bg-white p-1 my-1">
