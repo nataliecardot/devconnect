@@ -45,7 +45,6 @@ img {
 .container {
   max-width: 900px;
   margin: 6rem auto 2rem auto;
-  overflow: hidden;
   padding: 0 2rem;
 }
 
@@ -208,6 +207,7 @@ img {
 
 .fa-check {
   color: #808080;
+  margin-right: 3px;
 }
 
 .badge {
@@ -632,7 +632,11 @@ button {
 /* Mobile styles */
 @media (max-width: 700px) {
   .container {
-    margin-top: 8rem;
+    margin: 8rem auto 1rem auto;
+  }
+
+  .profile-github p {
+    overflow-wrap: break-word;
   }
 
   .landing-inner {
@@ -649,7 +653,7 @@ button {
   }
 
   .large {
-    font-size: 2rem;
+    font-size: 1.7rem;
   }
 
   .lead {
@@ -677,8 +681,13 @@ button {
 
   /* Profiles page */
   .profile {
-    grid-template-columns: 1fr;
     text-align: center;
+    display: block;
+    overflow: scroll;
+  }
+
+  .profile .btn {
+    margin-right: 0;
   }
 
   .profile ul {
@@ -689,7 +698,7 @@ button {
   .profile-top img,
   .profile img {
     width: 200px;
-    margin: auto;
+    margin: 0 auto 1rem;
   }
 
   .profile-grid {
@@ -707,7 +716,6 @@ button {
 
   .profile-about p {
     width: 100%;
-    text-align: left;
   }
 
   .dash-buttons .btn, .delete-account-btn {
