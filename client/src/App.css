@@ -683,7 +683,10 @@ button {
   .profile {
     text-align: center;
     display: block;
-    overflow: scroll;
+  }
+
+  .repo-text {
+    max-width: 75%;
   }
 
   .profile .btn {
