@@ -570,6 +570,7 @@ button {
 
 .profile-github .repo {
   display: flex;
+  justify-content: space-between;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
 }
@@ -654,6 +655,7 @@ button {
 
   .large {
     font-size: 1.7rem;
+    font-weight: normal;
   }
 
   .lead {
@@ -686,7 +688,7 @@ button {
   }
 
   .repo-text {
-    max-width: 75%;
+    max-width: 65%;
   }
 
   .profile .btn {
