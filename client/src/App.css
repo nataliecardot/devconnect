@@ -44,7 +44,7 @@ img {
 /* Utilities */
 .container {
   max-width: 900px;
-  margin: 6rem auto 2rem auto;
+  margin: 6rem auto 3rem auto;
   padding: 0 2rem;
 }
 
@@ -619,7 +619,7 @@ button {
 /* Mobile styles */
 @media (max-width: 700px) {
   .container {
-    margin: 8rem auto 1rem auto;
+    margin: 8rem auto 3rem auto;
   }
 
   .profile-github p {
