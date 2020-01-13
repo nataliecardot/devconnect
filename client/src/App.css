@@ -575,20 +575,6 @@ button {
   box-shadow: var(--box-shadow);
 }
 
-.profile-github .repo > div:first-child {
-  /* flex: One value, unitless number: flex-grow */
-  /* flex: 1 30px -- two values here means flex-grow | flex-basis */
-  /* flex-grow: Specifies how much of the remaining space in the flex container should be assigned to the item */
-  /* flex-basis: Sets the initial main size of a flex item */
-  flex: 7;
-  flex-basis: 70%;
-}
-
-.profile-github > div:last-child {
-  flex: 3;
-  flex-basis: 20%;
-}
-
 /* Posts page */
 .post-form .post-form-header {
   background: var(--primary-color);
