@@ -616,6 +616,10 @@ button {
   margin-bottom: 0.5rem;
 }
 
+.repo:last-of-type {
+  margin-bottom: 0;
+}
+
 /* Mobile styles */
 @media (max-width: 700px) {
   .container {
