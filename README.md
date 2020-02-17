@@ -25,6 +25,10 @@ npm run dev
 
 ## Notes
 
+To deploy to Heroku correctly, each time I deploy the app, after making and committing (plus pushing to GitHub) changes not related to the config data, I create a new branch and check it out with `git checkout -b production`, remove `config/production.json` from `.gitignore`, stage and commit (but do not push to GitHub), then run `git push heroku production:master`. Then, I do `git checkout master` and `git branch -d production`. This allows me to push my config info to Heroku without making it publicly available in my GitHub repository.
+
+Dependencies:
+
 - `express-validator`: for data validation – when making request to API, will raise an error if specified fields are missing
 
 - `bcryptjs`: for password encyption
