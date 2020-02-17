@@ -83,11 +83,10 @@ router.post(
         }
       };
 
-      // TODO: Change expiresIn option to 3600 (seconds - one hour) once it's ready for production
       jwt.sign(
         payload,
         config.get('jwtSecret'),
-        { expiresIn: 360000 },
+        { expiresIn: 3600 },
         (err, token) => {
           // If there's an error, the error is thrown (generated), and execution of the current function will stop (the statements after throw won't be executed)
           if (err) throw err;
