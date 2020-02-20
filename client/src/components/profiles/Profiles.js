@@ -41,6 +41,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
             {currentProfiles.map(profile => (
               <ProfileItem key={profile._id} profile={profile} />
             ))}
+            <br />
             <Pagination
               profilesPerPage={profilesPerPage}
               totalProfiles={profiles.length}
