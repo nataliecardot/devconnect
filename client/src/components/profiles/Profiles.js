@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Pagination from './Pagination';
 import Spinner from '../layout/Spinner';
 import ProfileItem from './ProfileItem';
 import { getProfiles } from '../../actions/profile';
 
 const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [profilesPerPage, setProfilesPerPage] = useState(10);
+  const [profilesPerPage, setProfilesPerPage] = useState(7);
 
   useEffect(() => {
     getProfiles();
@@ -24,8 +25,6 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
     indexOfLastProfile
   );
 
-  console.log(currentProfiles[0]);
-
   return (
     <>
       <h1 className="large text-primary">Developers</h1>
@@ -34,10 +33,17 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
         developers
       </p>
       <div className="profiles">
-        {currentProfiles.length > 0 ? (
-          currentProfiles.map(profile => (
-            <ProfileItem key={profile._id} profile={profile} />
-          ))
+        {currentProfiles.length ? (
+          <>
+            {currentProfiles.map(profile => (
+              <ProfileItem key={profile._id} profile={profile} />
+            ))}
+            <br />
+            <Pagination
+              profilesPerPage={profilesPerPage}
+              totalProfiles={profiles.length}
+            />
+          </>
         ) : (
           <Spinner />
         )}
