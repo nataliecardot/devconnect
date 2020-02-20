@@ -8,11 +8,14 @@ import { getProfiles } from '../../actions/profile';
 
 const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [profilesPerPage, setProfilesPerPage] = useState(7);
+  const [profilesPerPage] = useState(7);
 
   useEffect(() => {
     getProfiles();
   }, [getProfiles]);
+
+  // Change page
+  const paginate = pageNumber => setCurrentPage(pageNumber);
 
   // First/last profile index not on the page but to use in the slice method
   // For first page, would be 1 x 10 = 10; for second page, 2 x 10 = 20
@@ -38,10 +41,10 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
             {currentProfiles.map(profile => (
               <ProfileItem key={profile._id} profile={profile} />
             ))}
-            <br />
             <Pagination
               profilesPerPage={profilesPerPage}
               totalProfiles={profiles.length}
+              paginate={paginate}
             />
           </>
         ) : (
