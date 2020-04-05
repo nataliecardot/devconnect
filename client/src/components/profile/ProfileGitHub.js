@@ -6,7 +6,10 @@ import { getGitHubRepos } from '../../actions/profile';
 
 const ProfileGitHub = ({ username, getGitHubRepos, repos }) => {
   useEffect(() => {
-    getGitHubRepos(username);
+    // Prevents error caused by user entering full GitHub URL instead of username
+    if (!username.startsWith('http')) {
+      getGitHubRepos(username);
+    }
   }, [getGitHubRepos]);
 
   return (
@@ -15,9 +18,9 @@ const ProfileGitHub = ({ username, getGitHubRepos, repos }) => {
       {repos === null ? (
         <Spinner />
       ) : repos.length === 0 ? (
-        <p>This user doesn't have any repositiories yet.</p>
+        <p>No repos to display.</p>
       ) : (
-        repos.map(repo => (
+        repos.map((repo) => (
           <div key={repo.id} className="repo bg-white p-1 my-1">
             <div className="repo-text">
               <h4>
@@ -52,11 +55,11 @@ const ProfileGitHub = ({ username, getGitHubRepos, repos }) => {
 ProfileGitHub.propTypes = {
   getGitHubRepos: PropTypes.func.isRequired,
   repos: PropTypes.array.isRequired,
-  username: PropTypes.string.isRequired
+  username: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = state => ({
-  repos: state.profile.repos
+const mapStateToProps = (state) => ({
+  repos: state.profile.repos,
 });
 
 export default connect(mapStateToProps, { getGitHubRepos })(ProfileGitHub);
